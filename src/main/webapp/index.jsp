@@ -14,16 +14,36 @@
 
     <jsp:body>
 
-        <p>Startcode for 2nd semester </p>
-
-        <c:if test="${sessionScope.user != null}">
-            <p>You are logged in with the role of "${sessionScope.user.role}".</p>
-        </c:if>
-
-        <c:if test="${sessionScope.user == null}">
-            <p>You are not logged in yet. You can do it here: <a
-                    href="login.jsp">Login</a></p>
-        </c:if>
+        <div class="row g-3">
+        <div class="col-sm">
+                <%-- First button with topping selection --%>
+            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                Cupcake toppings
+            </button>
+            <div class="dropdown-menu">
+                ...
+            </div>
+        </div>
+        <div class="col-sm">
+                <%-- Second button with cakebody selection --%>
+            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                Cupcake caketype
+            </button>
+            <div class="dropdown-menu">
+                ...
+            </div>
+        </div>
+        <div class="col-sm">
+                <%-- Text for number of cupcakes --%>
+            <label for="inputZip">Number of cupcakes</label>
+            <input type="number" class="form-control" id="inputZip">
+        </div>
+        <div class="col-sm">
+                <%-- Third button with submit the selected cupcake combination --%>
+            <button type="button" class="btn btn-secondary">Submit cupcake</button>
+        </div>
 
     </jsp:body>
 
