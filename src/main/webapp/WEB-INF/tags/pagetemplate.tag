@@ -56,7 +56,7 @@
     </nav>
 
     <%-- Offcanvas Bar --%>
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" data-width="600px" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
             <h5 id="offcanvasRightLabel">Shopping Cart</h5>
             <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -73,22 +73,16 @@
                 </thead>
                 <tbody>
 
-                <c:forEach>
-
-
-
-                </c:forEach>
-
-<%--                <tr>--%>
-<%--                    <td>Daily Special</td>--%>
-<%--                    <td>1</td>--%>
-<%--                    <td>50</td>--%>
-<%--                </tr>--%>
-<%--                <tr>--%>
-<%--                    <td>Vanilie med springels</td>--%>
-<%--                    <td>1</td>--%>
-<%--                    <td>40</td>--%>
-<%--                </tr>--%>
+                <tr>
+                    <td>Daily Special</td>
+                    <td>1</td>
+                    <td>50</td>
+                </tr>
+                <tr>
+                    <td>Chocolate cupcake with Lemon topping</td>
+                    <td>1</td>
+                    <td>40</td>
+                </tr>
                 </tbody>
             </table>
 
