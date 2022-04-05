@@ -4,11 +4,13 @@ import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class UserMapper implements IUserMapper
 {
+
     ConnectionPool connectionPool;
 
     public UserMapper(ConnectionPool connectionPool)
