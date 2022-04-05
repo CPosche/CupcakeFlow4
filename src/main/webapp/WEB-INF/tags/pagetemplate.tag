@@ -47,8 +47,59 @@
                     </c:if>
                 </div>
             </div>
+
+            <button class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight"
+                    aria-controls="offcanvasRight">Shoppinc Cart
+            </button>
+
         </div>
     </nav>
+
+    <%-- Offcanvas Bar --%>
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+        <div class="offcanvas-header">
+            <h5 id="offcanvasRightLabel">Shopping Cart</h5>
+            <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Cupcake</th>
+                    <th scope="col">Amount</th>
+                    <th scope="col">Price</th>
+                </tr>
+                </thead>
+                <tbody>
+
+                <c:forEach>
+
+
+
+                </c:forEach>
+
+<%--                <tr>--%>
+<%--                    <td>Daily Special</td>--%>
+<%--                    <td>1</td>--%>
+<%--                    <td>50</td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <td>Vanilie med springels</td>--%>
+<%--                    <td>1</td>--%>
+<%--                    <td>40</td>--%>
+<%--                </tr>--%>
+                </tbody>
+            </table>
+
+
+
+            <button type="button" class="btn btn-primary">Confirm Order
+            </button>
+
+        </div>
+    </div>
+
 </header>
 
 <div id="body" class="container-fluid" style="min-height: 400px;">
