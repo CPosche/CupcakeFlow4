@@ -11,5 +11,9 @@ th, td {
     padding:15px;
 }
 
+.navbar .navbar-default{
+    background-image: url("../webapp/images/olskercupcakes.png"); /* assuming img folder is one step back from css*/
+}
+
 
 

@@ -18,10 +18,16 @@
 </head>
 <body>
 <header>
+    <div class="row" style="height: 150px">
+        <div class="text-center bg-image col p-0" style="background-image: url('<%=request.getContextPath()%>/images/olskercupcakes.png'); background-repeat: no-repeat; background-size: 100% 150px;
+                height: 100%;"></div>
+        <div class="col text-center bg-image p-0" style="background-image: url('<%=request.getContextPath()%>/images/olskercupcakes.png'); background-repeat: no-repeat; transform: scaleX(-1); -webkit-transform: scaleX(-1); background-size: 100% 150px;
+                height: 100%;"></div>
+    </div>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="index.jsp">
-                <img src="${pageContext.request.contextPath}/images/cphbusiness.png" width="400px;" class="img-fluid"/>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                     aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">

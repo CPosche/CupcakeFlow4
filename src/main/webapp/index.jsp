@@ -14,36 +14,35 @@
 
     <jsp:body>
 
-        <div class="row g-3">
-        <div class="col-sm">
+        <form class="form-inline" method="post">
+        <div class="form-group mb-2">
                 <%-- First button with topping selection --%>
-            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown"
+            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                Cupcake toppings
+                ${(sessionScope.topping == null) ? "Cupcake toppings" : sessionScope.topping}
             </button>
             <div class="dropdown-menu">
                 ...
             </div>
         </div>
-        <div class="col-sm">
+        <div class="form-group mx-sm-3 mb-2">
                 <%-- Second button with cakebody selection --%>
-            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown"
+            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
-                Cupcake caketype
+                    ${(sessionScope.bottom == null) ? "Cupcake bottom" : sessionScope.bottom}
             </button>
             <div class="dropdown-menu">
                 ...
             </div>
         </div>
-        <div class="col-sm">
+        <div class="form-group mx-sm-3 mb-2">
                 <%-- Text for number of cupcakes --%>
-            <label for="inputZip">Number of cupcakes</label>
-            <input type="number" class="form-control" id="inputZip">
+            <label for="inputZip" class="sr-only">Number of cupcakes</label>
+            <input type="number" class="form-control" placeholder="Number of cupcakes" id="inputZip">
         </div>
-        <div class="col-sm">
                 <%-- Third button with submit the selected cupcake combination --%>
-            <button type="button" class="btn btn-secondary">Submit cupcake</button>
-        </div>
+            <button type="button" class="btn btn-lg btn-secondary mb-2">Submit cupcake</button>
+        </form>
 
     </jsp:body>
 
