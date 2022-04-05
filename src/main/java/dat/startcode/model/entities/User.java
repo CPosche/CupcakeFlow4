@@ -6,10 +6,12 @@ public class User
 {
     private String username;
     private String password;
+    private int balance;
     private String role;
 
-    public User(String username, String password, String role)
+    public User(String username, String password, int balance, String role)
     {
+        this.balance = balance;
         this.username = username;
         this.password = password;
         this.role = role;

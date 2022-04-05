@@ -25,7 +25,7 @@ public class UserMapper implements IUserMapper
 
         User user = null;
 
-        String sql = "SELECT * FROM user WHERE username = ? AND password = ?";
+        String sql = "SELECT * FROM user u inner join role r on u.FK_user_role = r.role_id WHERE u.user_email = ? AND u.user_password = ?";
 
         try (Connection connection = connectionPool.getConnection())
         {
@@ -36,8 +36,9 @@ public class UserMapper implements IUserMapper
                 ResultSet rs = ps.executeQuery();
                 if (rs.next())
                 {
-                    String role = rs.getString("role");
-                    user = new User(username, password, role);
+                    String role = rs.getString("role_name");
+                    int balance = rs.getInt("user_balance");
+                    user = new User(username, password, balance, role);
                 } else
                 {
                     throw new DatabaseException("Wrong username or password");
@@ -66,7 +67,8 @@ public class UserMapper implements IUserMapper
                 int rowsAffected = ps.executeUpdate();
                 if (rowsAffected == 1)
                 {
-                    user = new User(username, password, role);
+//                    user = new User(username, password, role);
+                    user = null;
                 } else
                 {
                     throw new DatabaseException("The user with username = " + username + " could not be inserted into the database");
