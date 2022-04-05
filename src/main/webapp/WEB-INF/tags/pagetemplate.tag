@@ -17,6 +17,7 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 </head>
 <body>
+<div class="container-fluid">
 <header>
     <div class="row" style="height: 150px">
         <div class="text-center bg-image col p-0" style="background-image: url('<%=request.getContextPath()%>/images/olskercupcakes.png'); background-repeat: no-repeat; background-size: 100% 150px;
@@ -26,7 +27,7 @@
     </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
+        <div class="container-fluid">
             <a class="navbar-brand" href="index.jsp">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
@@ -50,15 +51,14 @@
     </nav>
 </header>
 
-<div id="body" class="container mt-4" style="min-height: 400px;">
+<div id="body" class="container-fluid" style="min-height: 400px;">
     <h1><jsp:invoke fragment="header"/></h1>
     <jsp:doBody/>
 </div>
 
 <!-- Footer -->
-<div class="container mt-3">
+<div class="row justify-content-between">
     <hr/>
-    <div class="row mt-4">
         <div class="col">
             Nørgaardsvej 30<br/>
             2800 Lyngby
@@ -71,12 +71,8 @@
             Datamatikeruddannelsen<br/>
             2. semester forår 2022
         </div>
-    </div>
-
 </div>
-
 </div>
-
 <!-- Bootstrap Bundle with Popper -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"

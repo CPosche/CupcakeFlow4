@@ -5,44 +5,51 @@
 
 <t:pagetemplate>
     <jsp:attribute name="header">
-         Welcome to the frontpage
+         Choose your cupcake
     </jsp:attribute>
 
     <jsp:attribute name="footer">
-        Welcome to the frontpage
+        Choose your cupcake
     </jsp:attribute>
 
     <jsp:body>
 
-        <form class="form-inline" method="post">
-        <div class="form-group mb-2">
-                <%-- First button with topping selection --%>
-            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                ${(sessionScope.topping == null) ? "Cupcake toppings" : sessionScope.topping}
-            </button>
-            <div class="dropdown-menu">
-                ...
+    <form method="post">
+        <div class="row justify-content-center">
+            <div class="col-auto">
+            <div class="col-auto">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="toppingDropDown" data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
+                        ${(sessionScope.topping == null ? "Cupcake toppings" : sessionScope.topping)}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="toppingDropDown">
+                        <li><a class="dropdown-item active" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-auto">
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="bottomDropDown" data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
+                            ${(sessionScope.bottom == null ? "Cupcake bottoms" : sessionScope.bottom)}
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="bottomDropDown">
+                        <li><a class="dropdown-item active" href="#">Action</a></li>
+                        <li><a class="dropdown-item" href="#">Another action</a></li>
+                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-auto">
+                <input class="form-control" type="number" id="amount" style="width: 75px;">
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-secondary" type="submit">Add to cart</button>
+            </div>
             </div>
         </div>
-        <div class="form-group mx-sm-3 mb-2">
-                <%-- Second button with cakebody selection --%>
-            <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    ${(sessionScope.bottom == null) ? "Cupcake bottom" : sessionScope.bottom}
-            </button>
-            <div class="dropdown-menu">
-                ...
-            </div>
-        </div>
-        <div class="form-group mx-sm-3 mb-2">
-                <%-- Text for number of cupcakes --%>
-            <label for="inputZip" class="sr-only">Number of cupcakes</label>
-            <input type="number" class="form-control" placeholder="Number of cupcakes" id="inputZip">
-        </div>
-                <%-- Third button with submit the selected cupcake combination --%>
-            <button type="button" class="btn btn-lg btn-secondary mb-2">Submit cupcake</button>
-        </form>
+    </form>
 
     </jsp:body>
 
