@@ -1,5 +1,6 @@
 package dat.startcode.control;
 
+import dat.startcode.model.DTO.DTOShoppingCart;
 import dat.startcode.model.config.ApplicationStart;
 import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
@@ -49,6 +50,7 @@ public class Login extends HttpServlet
             user = userMapper.login(username, password);
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
+            session.setAttribute("cart", new DTOShoppingCart());
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
         catch (DatabaseException e)

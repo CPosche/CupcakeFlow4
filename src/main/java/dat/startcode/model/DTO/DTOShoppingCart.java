@@ -1,30 +1,18 @@
 package dat.startcode.model.DTO;
 
-import javax.servlet.http.HttpServlet;
+import lombok.Getter;
+
 import java.util.ArrayList;
 
-public class DTOShoppingCart extends HttpServlet {
+public class DTOShoppingCart{
 
-    ArrayList<DTOOrderLine> orderLines = new ArrayList<>();
+    @Getter private ArrayList<DTOOrderLine> orderLines = new ArrayList<>();
+    @Getter private int total = 0;
 
-    int total = sum();
-
-    public int sum() {
-        int sum = 0;
+    public void sum() {
         for (DTOOrderLine i : orderLines) {
-            sum += i.lineTotal;
+            this.total += i.lineTotal;
         }
-        return sum;
-    }
-
-    public void generate() {
-
-        orderLines.add(new DTOOrderLine("Chocolate", "Vanilla",5,5,1));
-        orderLines.add(new DTOOrderLine("Chocolate", "Lemon",5,5,2));
-        orderLines.add(new DTOOrderLine("Almond", "Vanilla",5,5,3));
-        orderLines.add(new DTOOrderLine("Vanilla", "Strawberry",5,5,4));
-        orderLines.add(new DTOOrderLine("Chocolate", "Blueberry",5,5,6));
-
     }
 
 }

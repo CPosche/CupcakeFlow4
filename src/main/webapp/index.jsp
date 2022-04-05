@@ -17,7 +17,7 @@
             <div class="row g-3 align-items-center mt-5">
                 <div class="col-auto">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" id="toppingDropDown"
+                        <button class="btn btn-primary dropdown-toggle btn-lg" type="button" id="toppingDropDown"
                                 data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
                                 ${(sessionScope.topping == null ? "Cupcake toppings" : sessionScope.topping)}
                         </button>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-auto">
                     <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle btn-lg" type="button" onchange="" id="bottomDropDown"
+                        <button class="btn btn-primary dropdown-toggle btn-lg" type="button" onchange="" id="bottomDropDown"
                                 data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
                                 ${(sessionScope.bottom == null ? "Cupcake toppings" : sessionScope.bottom)}
                         </button>
@@ -45,7 +45,7 @@
                     <input class="form-control form-control-lg" type="number" id="amount" value="1" min="1" style="width: 75px;">
                 </div>
                 <div class="col-auto">
-                    <button class="btn btn-secondary btn-lg" type="submit">Add to cart</button>
+                    <button class="btn btn-primary btn-lg" type="submit">Add to cart</button>
                 </div>
             </div>
         </form>
