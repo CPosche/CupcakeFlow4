@@ -22,9 +22,9 @@
                                 ${(applicationScope.cupcakefactory.get("toppings").size() == 0 ? "no toppings" : "Chooose topping")}
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="toppingDropDown">
-                            <li><a class="dropdown-item active" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <c:forEach items="${applicationScope.cupcakefactory.get('toppings')}" var="topping">
+                                <li><a class="dropdown-item" href="#">${topping[1]}</a></li>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>
@@ -35,9 +35,9 @@
                                 ${(applicationScope.cupcakefactory.get("bottoms").size() == 0 ? "no bottoms" : "Chooose bottom")}
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="bottomDropDown">
-                            <li><a class="dropdown-item active" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Another action</a></li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
+                            <c:forEach items="${applicationScope.cupcakefactory.get('bottoms')}" var="bottom">
+                                <li><a class="dropdown-item" href="#">${bottom[1]}</a></li>
+                            </c:forEach>
                         </ul>
                     </div>
                 </div>

@@ -39,7 +39,7 @@ public class CupcakeMapper implements ICupcakeMapper{
                 while (rs.next())
                 {
                     String name = rs.getString("cupcaketop_name");
-                    String topPrice = String.valueOf(rs.getInt("cupcaketop_price"));
+                    String topPrice = String.valueOf(rs.getFloat("cupcaketop_price"));
                     tops.add(new String[]{name, topPrice});
                 }
             }
@@ -63,7 +63,7 @@ public class CupcakeMapper implements ICupcakeMapper{
                 while (rs.next())
                 {
                     String name = rs.getString("cupcakebottom_name");
-                    String botPrice = String.valueOf(rs.getInt("cupcakebottom_price"));
+                    String botPrice = String.valueOf(rs.getFloat("cupcakebottom_price"));
                     bots.add(new String[]{name, botPrice});
                 }
             }
