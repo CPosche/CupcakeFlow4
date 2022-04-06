@@ -34,8 +34,8 @@ public class ServletRegister extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         response.setContentType("text/html");
-        HttpSession session = request.getSession();
 
+        String message = "";
         UserMapper userMapper = new UserMapper(connectionPool);
 
         String username = request.getParameter("username");
@@ -43,7 +43,10 @@ public class ServletRegister extends HttpServlet {
 
         try{
 
-            userMapper.createUser(username,password,"user");
+            userMapper.createUser(username,password,"2");
+            message = "successfully created account";
+            request.setAttribute("msg", message);
+            request.getRequestDispatcher("index.jsp").forward(request,response);
 
         }catch (DatabaseException e) {
 
@@ -51,6 +54,5 @@ public class ServletRegister extends HttpServlet {
             request.setAttribute("errormessage", e.getMessage());
             request.getRequestDispatcher("error.jsp").forward(request, response);
         }
-
     }
 }

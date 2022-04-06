@@ -45,6 +45,7 @@
             </div>
         </form>
 
+        ${requestScope.msg}
     </jsp:body>
 
 </t:pagetemplate>
