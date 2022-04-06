@@ -15,4 +15,7 @@ public class DTOShoppingCart{
         }
     }
 
+    public void setOrderLines(DTOOrderLine orderLine) {
+        this.orderLines.add(orderLine);
+    }
 }

@@ -13,11 +13,11 @@
     </jsp:attribute>
 
     <jsp:body>
-        <form class="form-inline" method="post">
+        <form class="form-inline" method="post" action="Updatet">
             <div class="row g-3 align-items-center mt-5">
                 <div class="col-auto">
                     <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle btn-lg" type="button" id="toppingDropDown"
+                        <button class="btn btn-primary dropdown-toggle btn-lg" type="button" name="topping" id="toppingDropDown"
                                 data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
                                 ${(sessionScope.topping == null ? "Cupcake toppings" : sessionScope.topping)}
                         </button>
@@ -30,7 +30,7 @@
                 </div>
                 <div class="col-auto">
                     <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle btn-lg" type="button" onchange="" id="bottomDropDown"
+                        <button class="btn btn-primary dropdown-toggle btn-lg" type="button" name="bot" id="bottomDropDown"
                                 data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
                                 ${(sessionScope.bottom == null ? "Cupcake toppings" : sessionScope.bottom)}
                         </button>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="col-auto">
-                    <input class="form-control form-control-lg" type="number" id="amount" value="1" min="1" style="width: 75px;">
+                    <input class="form-control form-control-lg" type="number" id="amount" value="1" name="amountOf" min="1" style="width: 75px;">
                 </div>
                 <div class="col-auto">
                     <button class="btn btn-primary btn-lg" type="submit">Add to cart</button>

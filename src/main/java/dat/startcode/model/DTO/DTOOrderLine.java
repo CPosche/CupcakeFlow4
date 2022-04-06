@@ -16,7 +16,7 @@ public class DTOOrderLine {
     @Getter @Setter
     int amount;
     @Getter @Setter
-    int lineTotal = (topPrice+botPrice)*amount;
+    int lineTotal;
     @Getter @Setter
     String assembledCupcake;
 
@@ -26,6 +26,7 @@ public class DTOOrderLine {
         this.topPrice = topPrice;
         this.botPrice = botPrice;
         this.amount = amount;
+        this.lineTotal = (topPrice+botPrice)*amount;
         this.assembledCupcake = bottom + " cupcake with " + topping + " topping.";
     }
 }
