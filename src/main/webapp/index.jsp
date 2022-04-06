@@ -23,7 +23,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="toppingDropDown">
                             <c:forEach items="${applicationScope.cupcakefactory.get('toppings')}" var="topping">
-                                <li><a class="dropdown-item" href="#">${topping[1]}</a></li>
+                                <li><a class="dropdown-item" href="#">${topping[0]} - ${topping[1]}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
@@ -36,7 +36,7 @@
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="bottomDropDown">
                             <c:forEach items="${applicationScope.cupcakefactory.get('bottoms')}" var="bottom">
-                                <li><a class="dropdown-item" href="#">${bottom[1]}</a></li>
+                                <li><a class="dropdown-item" href="#">${bottom[0]} - ${bottom[1]}</a></li>
                             </c:forEach>
                         </ul>
                     </div>
