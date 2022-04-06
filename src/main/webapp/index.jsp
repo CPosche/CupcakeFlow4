@@ -19,7 +19,7 @@
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle btn-lg" type="button" name="topping" id="toppingDropDown"
                                 data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
-                                ${(sessionScope.topping == null ? "Cupcake toppings" : sessionScope.topping)}
+                                ${(applicationScope.cupcakefactory.get("toppings").size() == 0 ? "no toppings" : "Chooose topping")}
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="toppingDropDown">
                             <li><a class="dropdown-item active" href="#">Action</a></li>
@@ -32,7 +32,7 @@
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle btn-lg" type="button" name="bot" id="bottomDropDown"
                                 data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
-                                ${(sessionScope.bottom == null ? "Cupcake toppings" : sessionScope.bottom)}
+                                ${(applicationScope.cupcakefactory.get("bottoms").size() == 0 ? "no bottoms" : "Chooose bottom")}
                         </button>
                         <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="bottomDropDown">
                             <li><a class="dropdown-item active" href="#">Action</a></li>

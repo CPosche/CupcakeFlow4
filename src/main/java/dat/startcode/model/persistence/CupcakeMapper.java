@@ -20,14 +20,14 @@ public class CupcakeMapper implements ICupcakeMapper{
     }
 
     @Override
-    public Map[] getTopBot() {
-        Map<String, ArrayList<String[]>> top = getTop();
-        Map<String, ArrayList<String[]>> bot = getBot();
-        return new Map[]{top, bot};
+    public Map<String, ArrayList<String[]>> getTopBot() {
+        Map<String, ArrayList<String[]>> cupcakefactory = new HashMap<>();
+        cupcakefactory.put("toppings", getTop());
+        cupcakefactory.put("bottoms", getBot());
+        return cupcakefactory;
     }
 
-    public Map<String, ArrayList<String[]>> getTop(){
-        Map<String, ArrayList<String[]>> topping = new HashMap<>();
+    public ArrayList<String[]> getTop(){
         Logger.getLogger("web").log(Level.INFO, "");
         ArrayList<String[]> tops = new ArrayList<>();
         String sql = "select * from cupcaketops";
@@ -48,13 +48,10 @@ public class CupcakeMapper implements ICupcakeMapper{
             throwables.printStackTrace();
         }
 
-        topping.put("topping", tops);
-
-        return topping;
+        return tops;
     }
 
-    public Map<String, ArrayList<String[]>> getBot(){
-        Map<String, ArrayList<String[]>> bottom = new HashMap<>();
+    public ArrayList<String[]> getBot(){
         Logger.getLogger("web").log(Level.INFO, "");
         ArrayList<String[]> bots = new ArrayList<>();
         String sql = "select * from cupcakebottoms";
@@ -75,7 +72,6 @@ public class CupcakeMapper implements ICupcakeMapper{
             throwables.printStackTrace();
         }
 
-        bottom.put("topping", bots);
-        return bottom;
+        return bots;
     }
 }

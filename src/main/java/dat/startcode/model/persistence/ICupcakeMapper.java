@@ -1,7 +1,8 @@
 package dat.startcode.model.persistence;
 
+import java.util.ArrayList;
 import java.util.Map;
 
 public interface ICupcakeMapper {
-    Map[] getTopBot();
+    Map<String, ArrayList<String[]>> getTopBot();
 }
