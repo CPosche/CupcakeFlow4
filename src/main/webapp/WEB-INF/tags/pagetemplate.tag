@@ -40,22 +40,64 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 1</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 2</a>
-                        <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Page 3</a>
-                        <c:if test="${sessionScope.user == null }">
-                            <a class="nav-item nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
-                        </c:if>
-                        <c:if test="${sessionScope.user != null }">
-                            <a class="nav-item nav-link " href="${pageContext.request.contextPath}/logout">Log out</a>
-                        </c:if>
+                    <div class="navbar-nav align-content-center">
+
+                        <c:choose>
+                            <c:when test="${sessionScope.user.role.equals('admin')}">
+                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Customers</a>
+                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Orders</a>
+                            </c:when>
+                            <c:when test="${sessionScope.user.role.equals('user')}">
+                                <a class="nav-item nav-link disabled align-content-center" href="#">Balance - ${sessionScope.user.balance}</a>
+                            </c:when>
+                            <c:otherwise>
+                            </c:otherwise>
+                        </c:choose>
+
+                        <div class="dropdown">
+                            <button class="btn btn-sm" type="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false"><img src="<%=request.getContextPath()%>/images/ProfilePic.png"
+                                                               alt="ProfilePicture" width="50">
+                            </button>
+                            <ul class="dropdown-menu dropdown-menu-end px-2" style="width: 300px !important;">
+
+                                <c:if test="${sessionScope.user == null }">
+
+                                    <h5> Login </h5>
+                                    <div class="dropdown-divider"></div>
+
+                                    <form method="post">
+                                        <div class="form-group">
+                                            <label for="inputEmail1">Email address</label>
+                                            <input type="email" name="username" class="form-control" id="inputEmail1"
+                                                   placeholder="Enter email">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputPassword1">Password</label>
+                                            <input type="password" name="password" class="form-control"
+                                                   id="inputPassword1" placeholder="Password">
+                                        </div>
+                                        <br>
+                                        <button formaction="login" type="submit" class="btn btn-primary">Login</button>
+
+                                        <button type="submit" class="btn btn-primary">Register</button>
+                                    </form>
+                                </c:if>
+                                <c:if test="${sessionScope.user != null }">
+                                    <span style="text-align: center">${sessionScope.user.username}</span>
+                                    <hr>
+                                    <a class="dropdown-item" href="${pageContext.request.contextPath}/logout">Log
+                                        out</a>
+                                </c:if>
+                            </ul>
+                        </div>
                     </div>
                 </div>
 
                 <button class="btn position-relative p-0" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasRight"
-                        aria-controls="offcanvasRight"><img  src="<%=request.getContextPath()%>/images/carticon.png" alt="cart" width="50">
+                        aria-controls="offcanvasRight"><img src="<%=request.getContextPath()%>/images/carticon.png"
+                                                            alt="cart" width="50">
                     <span class="position-absolute top-0 start-98 translate-middle badge rounded-pill bg-danger">
                         ${(sessionScope.user != null ? sessionScope.cart.orderLines.size() : 0)}
                         <span class="visually-hidden">items in cart</span>
@@ -66,7 +108,8 @@
         </nav>
 
         <%-- Offcanvas Bar --%>
-        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" data-width="600px" data-bs-backdrop="false"
+        <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" data-width="600px"
+             data-bs-backdrop="false"
              aria-labelledby="offcanvasRightLabel">
             <div class="offcanvas-header">
                 <h5 id="offcanvasRightLabel">Shopping Cart</h5>
