@@ -20,8 +20,9 @@ public class Updatet extends HttpServlet {
         HttpSession session = request.getSession();
         DTOShoppingCart cart = (DTOShoppingCart) session.getAttribute("cart");
         String top = request.getParameter("topping");
-        String bot = request.getParameter("bot");
+        String bot = request.getParameter("bottom");
         int amount = Integer.parseInt(request.getParameter("amountOf"));
+
 
     }
 

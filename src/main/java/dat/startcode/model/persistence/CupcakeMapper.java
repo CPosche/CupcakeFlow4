@@ -38,9 +38,10 @@ public class CupcakeMapper implements ICupcakeMapper{
                 ResultSet rs = ps.executeQuery();
                 while (rs.next())
                 {
+                    String id = String.valueOf(rs.getInt("cupcaketop_id"));
                     String name = rs.getString("cupcaketop_name");
                     String topPrice = String.valueOf(rs.getFloat("cupcaketop_price"));
-                    tops.add(new String[]{name, topPrice});
+                    tops.add(new String[]{id, name, topPrice});
                 }
             }
 
@@ -62,9 +63,10 @@ public class CupcakeMapper implements ICupcakeMapper{
                 ResultSet rs = ps.executeQuery();
                 while (rs.next())
                 {
+                    String id = String.valueOf(rs.getInt("cupcakebottom_id"));
                     String name = rs.getString("cupcakebottom_name");
                     String botPrice = String.valueOf(rs.getFloat("cupcakebottom_price"));
-                    bots.add(new String[]{name, botPrice});
+                    bots.add(new String[]{id, name, botPrice});
                 }
             }
 

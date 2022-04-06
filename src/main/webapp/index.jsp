@@ -16,35 +16,30 @@
         <form class="form-inline" method="post" action="Updatet">
             <div class="row g-3 align-items-center mt-5">
                 <div class="col-auto">
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle btn-lg" type="button" name="topping" id="toppingDropDown"
-                                data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
-                                ${(applicationScope.cupcakefactory.get("toppings").size() == 0 ? "no toppings" : "Chooose topping")}
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="toppingDropDown">
-                            <c:forEach items="${applicationScope.cupcakefactory.get('toppings')}" var="topping">
-                                <li><a class="dropdown-item" href="#">${topping[0]} - ${topping[1]}</a></li>
-                            </c:forEach>
-                        </ul>
-                    </div>
+                    <label for="topselect"><h5>Choose topping</h5></label><br>
+                    <select name="topping" class="btn btn-primary btn-lg" size="1" id="topselect">
+                        <c:forEach items="${applicationScope.cupcakefactory.get('toppings')}" var="topping">
+                            <option value="${topping[0]}">${topping[1]} (${topping[2]} kr,-)</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div class="col-auto">
-                    <div class="dropdown">
-                        <button class="btn btn-primary dropdown-toggle btn-lg" type="button" name="bot" id="bottomDropDown"
-                                data-bs-toggle="dropdown" aria-expanded="false" style="width: 200px;">
-                                ${(applicationScope.cupcakefactory.get("bottoms").size() == 0 ? "no bottoms" : "Chooose bottom")}
-                        </button>
-                        <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="bottomDropDown">
-                            <c:forEach items="${applicationScope.cupcakefactory.get('bottoms')}" var="bottom">
-                                <li><a class="dropdown-item" href="#">${bottom[0]} - ${bottom[1]}</a></li>
-                            </c:forEach>
-                        </ul>
-                    </div>
+                    <label for="botselect"><h5>Choose bottom</h5></label><br>
+                    <select name="bottom" class="btn btn-primary btn-lg" size="1" id="botselect">
+                        <c:forEach items="${applicationScope.cupcakefactory.get('bottoms')}" var="bottom">
+                            <option value="${bottom[0]}">${bottom[1]} (${bottom[2]} kr,-)</option>
+                        </c:forEach>
+                    </select>
                 </div>
                 <div class="col-auto">
-                    <input class="form-control form-control-lg" type="number" id="amount" value="1" name="amountOf" min="1" style="width: 75px;">
+                    <h5></h5>
+                    <br>
+                    <input class="form-control form-control-lg" type="number" id="amount" value="1" name="amountOf"
+                           min="1" style="width: 75px;">
                 </div>
                 <div class="col-auto">
+                    <h5></h5>
+                    <br>
                     <button class="btn btn-primary btn-lg" type="submit">Add to cart</button>
                 </div>
             </div>

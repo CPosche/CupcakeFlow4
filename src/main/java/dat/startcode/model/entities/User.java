@@ -59,6 +59,10 @@ public class User
         this.role = role;
     }
 
+    public int getBalance() {
+        return balance;
+    }
+
     @Override
     public boolean equals(Object o)
     {
