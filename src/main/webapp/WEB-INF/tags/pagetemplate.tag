@@ -33,6 +33,7 @@
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container-fluid">
                 <a class="navbar-brand" href="index.jsp">
+                    Home
                 </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavAltMarkup"
@@ -40,7 +41,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-                    <div class="navbar-nav align-content-center">
+                    <div class="navbar-nav">
 
                         <c:choose>
                             <c:when test="${sessionScope.user.role.equals('admin')}">
@@ -55,14 +56,13 @@
                         </c:choose>
 
                         <div class="dropdown">
-                            <button class="btn btn-sm" type="button" data-bs-toggle="dropdown"
+                            <button class="btn btn-sm px-4" type="button" data-bs-toggle="dropdown"
                                     aria-expanded="false"><img src="<%=request.getContextPath()%>/images/ProfilePic.png"
                                                                alt="ProfilePicture" width="50">
                             </button>
                             <ul class="dropdown-menu dropdown-menu-end px-2" style="width: 300px !important;">
 
                                 <c:if test="${sessionScope.user == null }">
-
                                     <h5> Login </h5>
                                     <div class="dropdown-divider"></div>
 
@@ -80,7 +80,7 @@
                                         <br>
                                         <button formaction="login" type="submit" class="btn btn-primary">Login</button>
 
-                                        <button type="submit" class="btn btn-primary">Register</button>
+                                        <button formaction="register" type="submit" class="btn btn-primary">Register</button>
                                     </form>
                                 </c:if>
                                 <c:if test="${sessionScope.user != null }">
