@@ -18,16 +18,18 @@
                 <div class="col-auto">
                     <label for="topselect"><h5>Choose topping</h5></label><br>
                     <select name="topping" class="btn btn-primary btn-lg" size="1" id="topselect">
+                        <option value="" disabled selected hidden>Choose topping</option>
                         <c:forEach items="${applicationScope.cupcakefactory.get('toppings')}" var="topping">
-                            <option value="${topping[0]}">${topping[1]} (${topping[2]} kr,-)</option>
+                            <option value="${topping.id}">${topping.name} (${topping.price} kr,-)</option>
                         </c:forEach>
                     </select>
                 </div>
                 <div class="col-auto">
                     <label for="botselect"><h5>Choose bottom</h5></label><br>
                     <select name="bottom" class="btn btn-primary btn-lg" size="1" id="botselect">
+                        <option value="" disabled selected hidden>Choose bottom</option>
                         <c:forEach items="${applicationScope.cupcakefactory.get('bottoms')}" var="bottom">
-                            <option value="${bottom[0]}">${bottom[1]} (${bottom[2]} kr,-)</option>
+                            <option value="${bottom.id}">${bottom.name} (${bottom.price} kr,-)</option>
                         </c:forEach>
                     </select>
                 </div>

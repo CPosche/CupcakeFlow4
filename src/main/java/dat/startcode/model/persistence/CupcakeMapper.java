@@ -1,5 +1,9 @@
 package dat.startcode.model.persistence;
 
+import dat.startcode.model.entities.CupcakeBot;
+import dat.startcode.model.entities.CupcakeTop;
+import dat.startcode.model.entities.ICupcakePart;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,16 +24,16 @@ public class CupcakeMapper implements ICupcakeMapper{
     }
 
     @Override
-    public Map<String, ArrayList<String[]>> getTopBot() {
-        Map<String, ArrayList<String[]>> cupcakefactory = new HashMap<>();
+    public Map<String, ArrayList<ICupcakePart>> getTopBot() {
+        Map<String, ArrayList<ICupcakePart>> cupcakefactory = new HashMap<>();
         cupcakefactory.put("toppings", getTop());
         cupcakefactory.put("bottoms", getBot());
         return cupcakefactory;
     }
 
-    public ArrayList<String[]> getTop(){
+    public ArrayList<ICupcakePart> getTop(){
         Logger.getLogger("web").log(Level.INFO, "");
-        ArrayList<String[]> tops = new ArrayList<>();
+        ArrayList<ICupcakePart> tops = new ArrayList<>();
         String sql = "select * from cupcaketops";
 
         try (Connection connection = connectionPool.getConnection()){
@@ -38,10 +42,10 @@ public class CupcakeMapper implements ICupcakeMapper{
                 ResultSet rs = ps.executeQuery();
                 while (rs.next())
                 {
-                    String id = String.valueOf(rs.getInt("cupcaketop_id"));
+                    int id = rs.getInt("cupcaketop_id");
                     String name = rs.getString("cupcaketop_name");
-                    String topPrice = String.valueOf(rs.getFloat("cupcaketop_price"));
-                    tops.add(new String[]{id, name, topPrice});
+                    float topPrice = rs.getFloat("cupcaketop_price");
+                    tops.add(new CupcakeTop(id, name, topPrice));
                 }
             }
 
@@ -52,9 +56,9 @@ public class CupcakeMapper implements ICupcakeMapper{
         return tops;
     }
 
-    public ArrayList<String[]> getBot(){
+    public ArrayList<ICupcakePart> getBot(){
         Logger.getLogger("web").log(Level.INFO, "");
-        ArrayList<String[]> bots = new ArrayList<>();
+        ArrayList<ICupcakePart> bots = new ArrayList<>();
         String sql = "select * from cupcakebottoms";
 
         try (Connection connection = connectionPool.getConnection()){
@@ -63,10 +67,10 @@ public class CupcakeMapper implements ICupcakeMapper{
                 ResultSet rs = ps.executeQuery();
                 while (rs.next())
                 {
-                    String id = String.valueOf(rs.getInt("cupcakebottom_id"));
+                    int id = rs.getInt("cupcakebottom_id");
                     String name = rs.getString("cupcakebottom_name");
-                    String botPrice = String.valueOf(rs.getFloat("cupcakebottom_price"));
-                    bots.add(new String[]{id, name, botPrice});
+                    float botPrice = rs.getFloat("cupcakebottom_price");
+                    bots.add(new CupcakeBot(id, name, botPrice));
                 }
             }
 
