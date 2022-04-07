@@ -1,32 +1,34 @@
 package dat.startcode.model.DTO;
 
+import dat.startcode.model.entities.CupcakeBot;
+import dat.startcode.model.entities.CupcakeTop;
 import lombok.Getter;
 import lombok.Setter;
 
 public class DTOOrderLine {
 
     @Getter @Setter
-    String topping;
+    CupcakeTop topping;
     @Getter @Setter
-    String bottom;
+    CupcakeBot bottom;
     @Getter @Setter
-    int topPrice;
+    float topPrice;
     @Getter @Setter
-    int botPrice;
+    float botPrice;
     @Getter @Setter
     int amount;
     @Getter @Setter
-    int lineTotal;
+    float lineTotal;
     @Getter @Setter
     String assembledCupcake;
 
-    public DTOOrderLine(String topping, String bottom, int topPrice, int botPrice, int amount) {
+    public DTOOrderLine(CupcakeTop topping, CupcakeBot bottom, float topPrice, float botPrice, int amount) {
         this.topping = topping;
         this.bottom = bottom;
         this.topPrice = topPrice;
         this.botPrice = botPrice;
         this.amount = amount;
         this.lineTotal = (topPrice+botPrice)*amount;
-        this.assembledCupcake = bottom + " cupcake with " + topping + " topping.";
+        this.assembledCupcake = bottom.getName() + " cupcake with " + topping.getName() + " topping.";
     }
 }

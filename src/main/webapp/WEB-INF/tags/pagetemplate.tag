@@ -117,7 +117,7 @@
             </div>
             <div class="offcanvas-body">
 
-                <table class="table">
+                <table class="table table-striped">
                     <thead>
                     <tr>
                         <th scope="col">Cupcake</th>
@@ -126,17 +126,17 @@
                     </tr>
                     </thead>
                     <tbody>
-
-                    <tr>
-                        <td>Daily Special</td>
-                        <td>1</td>
-                        <td>50</td>
-                    </tr>
-                    <tr onclick="notNew(this)">
-                        <td>Chocolate cupcake with Lemon topping</td>
-                        <td>1</td>
-                        <td>40</td>
-                    </tr>
+                    <c:forEach items="${sessionScope.cart.orderLines}" var="line">
+                        <tr>
+                            <td>${line.assembledCupcake}</td>
+                            <td>${line.amount}</td>
+                            <td>${line.lineTotal}</td>
+                            <td colspan="4">
+                                <table class="table mb-0">
+                                </table>
+                            </td>
+                        </tr>
+                    </c:forEach>
                     </tbody>
                 </table>
 

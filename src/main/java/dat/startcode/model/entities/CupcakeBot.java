@@ -1,8 +1,10 @@
 package dat.startcode.model.entities;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class CupcakeBot implements ICupcakePart{
 
     private int id;

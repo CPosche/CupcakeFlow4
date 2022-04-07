@@ -1,8 +1,10 @@
 package dat.startcode.model.entities;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class CupcakeTop implements ICupcakePart{
 
     private int id;
@@ -14,5 +16,4 @@ public class CupcakeTop implements ICupcakePart{
         this.name = name;
         this.price = price;
     }
-
 }
