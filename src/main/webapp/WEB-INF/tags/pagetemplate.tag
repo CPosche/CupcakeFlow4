@@ -131,12 +131,36 @@
                             <td>${line.assembledCupcake}</td>
                             <td>${line.amount}</td>
                             <td>${line.lineTotal}</td>
+                        </tr>
+                        <tr>
                             <td colspan="4">
                                 <table class="table mb-0">
+                                    <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Price</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <th scope="row">Topping</th>
+                                        <td>${line.topping.name}</td>
+                                        <td>${line.topping.price}</td>
+                                    </tr>
+                                    <tr>
+                                        <th scope="row">Bottom</th>
+                                        <td>${line.bottom.name}</td>
+                                        <td>${line.bottom.price}</td>
+                                    </tr>
+                                    </tbody>
                                 </table>
                             </td>
                         </tr>
                     </c:forEach>
+                    <tr>
+                        <th scope="row">Total</th>
+                        <td colspan="4">${sessionScope.cart.total}</td>
+                    </tr>
                     </tbody>
                 </table>
 
