@@ -20,7 +20,7 @@
                     <select name="topping" class="btn btn-primary btn-lg" size="1" id="topselect">
                         <option value="" disabled selected hidden>Choose topping</option>
                         <c:forEach items="${applicationScope.cupcakefactory.get('toppings')}" var="topping">
-                            <option value="${topping.id}">${topping.name} (${topping.price} kr,-)</option>
+                            <option value="${topping.id}">${topping.name} (${topping.price} kr)</option>
                         </c:forEach>
                     </select>
                 </div>
@@ -29,7 +29,7 @@
                     <select name="bottom" class="btn btn-primary btn-lg" size="1" id="botselect">
                         <option value="" disabled selected hidden>Choose bottom</option>
                         <c:forEach items="${applicationScope.cupcakefactory.get('bottoms')}" var="bottom">
-                            <option value="${bottom.id}">${bottom.name} (${bottom.price} kr,-)</option>
+                            <option value="${bottom.id}">${bottom.name} (${bottom.price} kr)</option>
                         </c:forEach>
                     </select>
                 </div>

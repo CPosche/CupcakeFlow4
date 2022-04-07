@@ -120,53 +120,29 @@
                 <table class="table table-striped">
                     <thead>
                     <tr>
+                        <th scope="col">#</th>
                         <th scope="col">Cupcake</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Price</th>
                     </tr>
                     </thead>
-                    <tbody>
+                    <tbody style="font-size: 12px" data-bs-toggle="collapse" data-bs-target="#collapseOne">
                     <c:forEach items="${sessionScope.cart.orderLines}" var="line">
                         <tr>
+                            <th scope="row">${sessionScope.cart.orderLines.indexOf(line)+1}</th>
                             <td>${line.assembledCupcake}</td>
                             <td>${line.amount}</td>
-                            <td>${line.lineTotal}</td>
-                        </tr>
-                        <tr>
-                            <td colspan="4">
-                                <table class="table mb-0">
-                                    <thead>
-                                    <tr>
-                                        <th scope="col">#</th>
-                                        <th scope="col">Price</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <th scope="row">Topping</th>
-                                        <td>${line.topping.name}</td>
-                                        <td>${line.topping.price}</td>
-                                    </tr>
-                                    <tr>
-                                        <th scope="row">Bottom</th>
-                                        <td>${line.bottom.name}</td>
-                                        <td>${line.bottom.price}</td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </td>
+                            <td>${line.lineTotal} kr</td>
                         </tr>
                     </c:forEach>
-                    <tr>
-                        <th scope="row">Total</th>
-                        <td colspan="4">${sessionScope.cart.total}</td>
-                    </tr>
                     </tbody>
+                    <tfoot>
+                    <tr>
+                        <td colspan="4">Total: ${sessionScope.cart.total} kr</td>
+                    </tr>
+                    </tfoot>
                 </table>
-
-
                 <button type="button" class="btn btn-primary">Confirm Order</button>
-
             </div>
         </div>
 
