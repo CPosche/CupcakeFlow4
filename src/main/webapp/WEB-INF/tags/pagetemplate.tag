@@ -165,8 +165,7 @@
                 </table>
 
 
-                <button type="button" class="btn btn-primary">Confirm Order
-                </button>
+                <button type="button" class="btn btn-primary">Confirm Order</button>
 
             </div>
         </div>

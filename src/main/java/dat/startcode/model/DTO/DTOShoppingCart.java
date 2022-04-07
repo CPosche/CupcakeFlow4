@@ -10,6 +10,7 @@ public class DTOShoppingCart{
     @Getter private float total = 0;
 
     public void sum() {
+        this.total = 0;
         for (DTOOrderLine i : orderLines) {
             this.total += i.lineTotal;
         }
