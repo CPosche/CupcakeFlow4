@@ -48,7 +48,7 @@
                                 <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Customers</a>
                                 <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Orders</a>
                             </c:when>
-                            <c:when test="${sessionScope.user.role.equals('user')}">
+                            <c:when test="${sessionScope.user.role.equals('customer')}">
                                 <a class="nav-item nav-link disabled align-content-center" href="#">Balance - ${sessionScope.user.balance}</a>
                             </c:when>
                             <c:otherwise>
@@ -93,7 +93,6 @@
                         </div>
                     </div>
                 </div>
-
                 <button class="btn position-relative p-0" type="button" data-bs-toggle="offcanvas"
                         data-bs-target="#offcanvasRight"
                         aria-controls="offcanvasRight"><img src="<%=request.getContextPath()%>/images/carticon.png"

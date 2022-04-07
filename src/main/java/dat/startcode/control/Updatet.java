@@ -22,7 +22,8 @@ public class Updatet extends HttpServlet {
         String top = request.getParameter("topping");
         String bot = request.getParameter("bottom");
         int amount = Integer.parseInt(request.getParameter("amountOf"));
-
+        addOrderLine(cart, "choko", "vanilla", 10, 20, 5);
+        request.getRequestDispatcher("index.jsp").forward(request, response);
 
     }
 
