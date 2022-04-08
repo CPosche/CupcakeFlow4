@@ -47,6 +47,19 @@
             </div>
         </form>
 
+        <div class="toast-container position-absolute p-3" style="z-index: 11" id="toastPlacement">
+            <div class="toast hide" id="cartToast">
+                <div class="toast-header">
+                    <img src="..." class="rounded me-2" alt="...">
+                    <strong class="me-auto">Item</strong>
+                    <small>Right now</small>
+                </div>
+                <div class="toast-body">
+                    Item added to cart.
+                    <button type="button" class="btn btn-primary btn-sm">Take action</button>
+                </div>
+            </div>
+        </div>
         ${requestScope.msg}
     </jsp:body>
 

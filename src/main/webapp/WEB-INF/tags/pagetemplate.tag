@@ -134,6 +134,14 @@
                             <td>${line.amount}</td>
                             <td>${line.lineTotal} kr</td>
                         </tr>
+                        <tr>
+                            <td colspan=5>
+                                <div id="full_order_line" style="color: lightslategray">
+                                    <p>+ full orderline here</p>
+                                </div>
+                            </td>
+
+                        </tr>
                     </c:forEach>
                     </tbody>
                     <tfoot>

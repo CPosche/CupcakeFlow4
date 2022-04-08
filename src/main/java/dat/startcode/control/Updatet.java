@@ -30,7 +30,6 @@ public class Updatet extends HttpServlet {
         int amount = Integer.parseInt(request.getParameter("amountOf"));
         addOrderLine(cart, top, bot, top.getPrice(), bot.getPrice(), amount);
         request.getRequestDispatcher("index.jsp").forward(request, response);
-
     }
 
     public void addOrderLine(DTOShoppingCart cart, CupcakeTop top, CupcakeBot bot, float topPrice, float botPrice, int amount){
