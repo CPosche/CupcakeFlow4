@@ -45,8 +45,7 @@
 
                         <c:choose>
                             <c:when test="${sessionScope.user.role.equals('admin')}">
-                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Customers</a>
-                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/">Orders</a>
+                                <a class="nav-item nav-link" href="${pageContext.request.contextPath}/Dashboard.jsp">Dashboard</a>
                             </c:when>
                             <c:when test="${sessionScope.user.role.equals('customer')}">
                                 <a class="nav-item nav-link disabled align-content-center" href="#">Balance - ${sessionScope.user.balance}</a>

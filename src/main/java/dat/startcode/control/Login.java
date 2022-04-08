@@ -51,7 +51,12 @@ public class Login extends HttpServlet
             session = request.getSession();
             session.setAttribute("user", user); // adding user object to session scope
             session.setAttribute("cart", new DTOShoppingCart());
-            request.getRequestDispatcher("index.jsp").forward(request, response);
+            if (user.getRole().equals("admin")) {
+                session.setAttribute("Dashpage","Orders");
+                request.getRequestDispatcher("Dashboard.jsp").forward(request,response);
+            } else {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
         }
         catch (DatabaseException e)
         {
