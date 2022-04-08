@@ -15,15 +15,12 @@ public class DashServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
-        String page = (String) session.getAttribute("Dashpage");
+        //HttpSession session = request.getSession();
+        String page = request.getParameter("Dashpage");
 
-        if (page.equals("Orders")) {
-            session.setAttribute("Dashpage", "Customers");
-        } else {
-            session.setAttribute("Dashpage", "Orders");
-        }
+        System.out.println(page);
+        request.setAttribute("Dashpage", page);
+        request.getRequestDispatcher("Dashboard.jsp").forward(request,response);
 
-        request.getRequestDispatcher("./webapp/Dashboard.jsp").forward(request,response);
     }
 }

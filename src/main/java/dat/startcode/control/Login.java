@@ -52,7 +52,7 @@ public class Login extends HttpServlet
             session.setAttribute("user", user); // adding user object to session scope
             session.setAttribute("cart", new DTOShoppingCart());
             if (user.getRole().equals("admin")) {
-                session.setAttribute("Dashpage","Orders");
+                request.setAttribute("Dashpage","Orders");
                 request.getRequestDispatcher("Dashboard.jsp").forward(request,response);
             } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);

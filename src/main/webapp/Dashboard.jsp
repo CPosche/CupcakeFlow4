@@ -8,33 +8,33 @@
     <jsp:body>
 
         <div class="container-fluid">
-            <c:if test="${sessionScope.Dashpage.equals('Orders')}">
+            <c:if test="${requestScope.Dashpage eq 'Orders'}">
                 <nav aria-label="...">
                     <ul class="pagination pagination-lg">
                         <li class="page-item active">
-                            <a class="page-link disabled" href="DashServlet">Orders</a>
+                            <span class="page-link">Orders</span>
                         </li>
                         <li class="page-item">
-                            <a class="page-link" href="DashServlet">Customers</a>
+                            <a class="page-link" href="DashServlet?Dashpage=Customers">Customers</a>
                         </li>
                     </ul>
                 </nav>
             </c:if>
 
-            <c:if test="${sessionScope.Dashpage.equals('Customers')}">
+            <c:if test="${requestScope.Dashpage eq 'Customers'}">
                 <nav aria-label="...">
                     <ul class="pagination pagination-lg">
                         <li class="page-item ">
-                            <a class="page-link" href="DashServlet">Orders</a>
+                            <a class="page-link" href="DashServlet?Dashpage=Orders">Orders</a>
                         </li>
                         <li class="page-item active">
-                            <a class="page-link disabled" href="DashServlet">Customers</a>
+                            <span class="page-link" >Customers</span>
                         </li>
                     </ul>
                 </nav>
             </c:if>
 
-            <c:if test="${sessionScope.Dashpage.equals('Orders')}">
+            <c:if test="${requestScope.Dashpage eq 'Orders'}">
                 <div class="row">
 
                     <div class="col">
@@ -95,7 +95,7 @@
                 </div>
             </c:if>
 
-            <c:if test="${sessionScope.Dashpage.equals('Customers')}">
+            <c:if test="${requestScope.Dashpage eq'Customers'}">
                 <div class="row">
 
                     <div class="col">
