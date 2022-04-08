@@ -34,7 +34,7 @@ public class CupcakeMapper implements ICupcakeMapper{
     }
 
     @Override
-    public DTOShoppingCart makeOrder(DTOShoppingCart cart, User user) throws DatabaseException {
+    public int makeOrder(DTOShoppingCart cart, User user) throws DatabaseException {
         int orderkey = 0;
 
         String orderSql = "INSERT INTO cupcake.order (FK_user_id) VALUES (?)";
@@ -66,7 +66,7 @@ public class CupcakeMapper implements ICupcakeMapper{
             throw new DatabaseException(Arrays.toString(e.getStackTrace()));
         }
 
-        return cart;
+        return orderkey;
     }
 
     public ArrayList<ICupcakePart> getTop(){

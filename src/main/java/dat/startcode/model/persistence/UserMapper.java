@@ -5,6 +5,7 @@ import dat.startcode.model.exceptions.DatabaseException;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -82,6 +83,27 @@ public class UserMapper implements IUserMapper
             throw new DatabaseException(ex, "Could not insert username into database");
         }
         return user;
+    }
+
+    @Override
+    public Void pay(int orderID, User user) throws DatabaseException {
+
+
+        String sql = "UPDATE cupcake.order SET order_isPayed = 1 WHERE order_id = ?";
+
+        try (Connection connection = connectionPool.getConnection()){
+
+            try(PreparedStatement ps = connection.prepareStatement(sql)) {
+                ps.setInt(1, orderID);
+                ps.executeUpdate();
+            }
+
+        } catch ( SQLException e) {
+            throw new DatabaseException(Arrays.toString(e.getStackTrace()));
+        }
+
+
+        return null;
     }
 
 

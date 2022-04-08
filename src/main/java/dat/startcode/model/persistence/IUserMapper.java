@@ -7,4 +7,7 @@ public interface IUserMapper
 {
     public User login(String email, String kodeord) throws DatabaseException;
     public User createUser(String username, String password, String role) throws DatabaseException;
+
+    Void pay(int orderID, User user) throws DatabaseException;
+
 }

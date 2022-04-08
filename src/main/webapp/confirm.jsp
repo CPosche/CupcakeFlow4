@@ -23,9 +23,9 @@
                 </tr>
                 </thead>
                 <tbody style="font-size: 12px" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                <c:forEach items="${sessionScope.cart.orderLines}" var="line">
+                <c:forEach items="${requestScope.cart.orderLines}" var="line">
                     <tr>
-                        <th scope="row">${sessionScope.cart.orderLines.indexOf(line)+1}</th>
+                        <th scope="row">${requestScope.cart.orderLines.indexOf(line)+1}</th>
                         <td>${line.assembledCupcake}</td>
                         <td>${line.amount}</td>
                         <td>${line.lineTotal} kr</td>
@@ -42,13 +42,14 @@
                 </tbody>
                 <tfoot>
                 <tr>
-                    <td colspan="4">Total: ${sessionScope.cart.total} kr</td>
+                    <td colspan="4">Total: ${requestScope.cart.total} kr</td>
                 </tr>
                 </tfoot>
             </table>
 
-
-            <button type="button" class="btn btn-primary">Confirm and pay</button>
+            <form action="PayServlet" method="post">
+                <button name="confirm" value="${requestScope.orderID}" type="submit" class="btn btn-primary" >Confirm and pay</button>
+            </form>
 
             <a class="btn btn-primary"  href="index.jsp">Return</a>
 
