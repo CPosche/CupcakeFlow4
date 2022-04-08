@@ -18,7 +18,6 @@ public class DashServlet extends HttpServlet {
         //HttpSession session = request.getSession();
         String page = request.getParameter("Dashpage");
 
-        System.out.println(page);
         request.setAttribute("Dashpage", page);
         request.getRequestDispatcher("Dashboard.jsp").forward(request,response);
 

@@ -41,7 +41,6 @@ public class MakeOrderServlet extends HttpServlet {
 
         try{
             int orderID = cupcakeMapper.makeOrder(cart, user);
-            System.out.println(orderID);
             request.setAttribute("cart", cart);
             request.setAttribute("orderID", orderID);
             session.setAttribute("cart", new DTOShoppingCart());

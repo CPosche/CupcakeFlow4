@@ -38,7 +38,6 @@ public class PayServlet extends HttpServlet {
         UserMapper userMapper = new UserMapper(connectionPool);
 
         int orderID = Integer.parseInt(request.getParameter("confirm"));
-        System.out.println(orderID);
         User user = (User) session.getAttribute("user");
         String msg = "";
 
