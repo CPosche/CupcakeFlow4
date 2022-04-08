@@ -20,7 +20,6 @@
                     </ul>
                 </nav>
             </c:if>
-
             <c:if test="${requestScope.Dashpage eq 'Customers'}">
                 <nav aria-label="...">
                     <ul class="pagination pagination-lg">
