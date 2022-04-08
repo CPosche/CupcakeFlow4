@@ -37,8 +37,17 @@ public class CupcakeMapper implements ICupcakeMapper{
     public DTOShoppingCart makeOrder(DTOShoppingCart cart) throws DatabaseException {
         DTOShoppingCart shopCart = cart;
 
-        String orderSql = "";
+        String orderSql = "INSERT INTO order ";
 
+        try (Connection connection = connectionPool.getConnection()){
+
+            try (PreparedStatement ps = connection.prepareStatement(orderSql)){
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
 
 
         return cart;
