@@ -1,8 +1,10 @@
 package dat.startcode.model.persistence;
 
+import dat.startcode.model.DTO.DTOShoppingCart;
 import dat.startcode.model.entities.CupcakeBot;
 import dat.startcode.model.entities.CupcakeTop;
 import dat.startcode.model.entities.ICupcakePart;
+import dat.startcode.model.exceptions.DatabaseException;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -29,6 +31,17 @@ public class CupcakeMapper implements ICupcakeMapper{
         cupcakefactory.put("toppings", getTop());
         cupcakefactory.put("bottoms", getBot());
         return cupcakefactory;
+    }
+
+    @Override
+    public DTOShoppingCart makeOrder(DTOShoppingCart cart) throws DatabaseException {
+        DTOShoppingCart shopCart = cart;
+
+        String orderSql = "";
+
+
+
+        return cart;
     }
 
     public ArrayList<ICupcakePart> getTop(){

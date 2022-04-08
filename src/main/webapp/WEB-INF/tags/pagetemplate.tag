@@ -48,7 +48,8 @@
                                 <a class="nav-item nav-link" href="${pageContext.request.contextPath}/Dashboard.jsp">Dashboard</a>
                             </c:when>
                             <c:when test="${sessionScope.user.role.equals('customer')}">
-                                <a class="nav-item nav-link disabled align-content-center" href="#">Balance - ${sessionScope.user.balance}</a>
+                                <a class="nav-item nav-link disabled align-content-center" href="#">Balance
+                                    - ${sessionScope.user.balance}</a>
                             </c:when>
                             <c:otherwise>
                             </c:otherwise>
@@ -79,7 +80,8 @@
                                         <br>
                                         <button formaction="login" type="submit" class="btn btn-primary">Login</button>
 
-                                        <button formaction="register" type="submit" class="btn btn-primary">Register</button>
+                                        <button formaction="register" type="submit" class="btn btn-primary">Register
+                                        </button>
                                     </form>
                                 </c:if>
                                 <c:if test="${sessionScope.user != null }">
@@ -149,7 +151,9 @@
                     </tr>
                     </tfoot>
                 </table>
-                <button type="button" class="btn btn-primary">Confirm Order</button>
+                <form action="MakeOrderServlet" method="post">
+                    <button type="submit" class="btn btn-primary">Confirm Order</button>
+                </form>
             </div>
         </div>
 
