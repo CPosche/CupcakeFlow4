@@ -35,6 +35,7 @@
                 <a class="navbar-brand" href="index.jsp">
                     Home
                 </a>
+
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                         data-bs-target="#navbarNavAltMarkup"
                         aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -153,6 +154,9 @@
                 </table>
                 <form action="MakeOrderServlet" method="post">
                     <button type="submit" class="btn btn-primary">Confirm Order</button>
+
+<%--                    db shit--%>
+
                 </form>
             </div>
         </div>

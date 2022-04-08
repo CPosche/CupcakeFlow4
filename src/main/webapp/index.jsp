@@ -40,9 +40,15 @@
                            min="1" style="width: 75px;">
                 </div>
                 <div class="col-auto">
-                    <h5></h5>
-                    <br>
-                    <button class="btn btn-primary btn-lg" type="submit">Add to cart</button>
+                    <c:if test="${sessionScope.user == null}">
+                        <h5>Please login first</h5>
+                        <button class="btn btn-secondary btn-lg" type="submit" disabled>Add to cart</button>
+                    </c:if>
+                    <c:if test="${sessionScope.user != null}">
+                        <h5></h5>
+                        <br>
+                        <button class="btn btn-primary btn-lg" type="submit">Add to cart</button>
+                    </c:if>
                 </div>
             </div>
         </form>
