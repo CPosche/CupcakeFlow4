@@ -2,6 +2,7 @@ package dat.startcode.control;
 
 import dat.startcode.model.DTO.DTOShoppingCart;
 import dat.startcode.model.config.ApplicationStart;
+import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 import dat.startcode.model.persistence.ConnectionPool;
 import dat.startcode.model.persistence.CupcakeMapper;
@@ -32,15 +33,14 @@ public class MakeOrderServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
+        User user = (User) session.getAttribute("user");
         DTOShoppingCart cart = (DTOShoppingCart) session.getAttribute("cart");
         CupcakeMapper cupcakeMapper = new CupcakeMapper(connectionPool);
 
         String msg = "";
 
         try{
-            cupcakeMapper.makeOrder(cart);
-            msg = "successfully created account";
-            request.setAttribute("msg", msg);
+            cupcakeMapper.makeOrder(cart, user);
             request.getRequestDispatcher("index.jsp").forward(request,response);
         }catch (DatabaseException e){
             Logger.getLogger("web").log(Level.SEVERE, e.getMessage());

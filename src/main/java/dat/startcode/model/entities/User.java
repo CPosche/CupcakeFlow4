@@ -4,20 +4,24 @@ import java.util.Objects;
 
 public class User
 {
+    private int id;
     private String username;
     private String password;
     private int balance;
     private String role;
 
-    public User(String username, String password, int balance, String role)
+    public User(int id, String username, String password, int balance, String role)
     {
+        this.id = id;
         this.balance = balance;
         this.username = username;
         this.password = password;
         this.role = role;
     }
 
-
+    public int getId() {
+        return id;
+    }
 
     @Override
     public String toString()

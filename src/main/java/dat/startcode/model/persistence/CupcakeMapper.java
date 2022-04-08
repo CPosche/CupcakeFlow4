@@ -1,16 +1,16 @@
 package dat.startcode.model.persistence;
 
+import dat.startcode.model.DTO.DTOOrderLine;
 import dat.startcode.model.DTO.DTOShoppingCart;
 import dat.startcode.model.entities.CupcakeBot;
 import dat.startcode.model.entities.CupcakeTop;
 import dat.startcode.model.entities.ICupcakePart;
+import dat.startcode.model.entities.User;
 import dat.startcode.model.exceptions.DatabaseException;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -34,21 +34,37 @@ public class CupcakeMapper implements ICupcakeMapper{
     }
 
     @Override
-    public DTOShoppingCart makeOrder(DTOShoppingCart cart) throws DatabaseException {
-        DTOShoppingCart shopCart = cart;
+    public DTOShoppingCart makeOrder(DTOShoppingCart cart, User user) throws DatabaseException {
+        int orderkey = 0;
 
-        String orderSql = "INSERT INTO order ";
+        String orderSql = "INSERT INTO cupcake.order (FK_user_id) VALUES (?)";
+        String olSql = "INSERT INTO cupcake.orderline (FK_cupcaketop_id, FK_cupcakebot_id, FK_order_id, orderline_amount) VALUES (?, ?, ?, ?)";
 
         try (Connection connection = connectionPool.getConnection()){
 
-            try (PreparedStatement ps = connection.prepareStatement(orderSql)){
-
+            try (PreparedStatement ps = connection.prepareStatement(orderSql, Statement.RETURN_GENERATED_KEYS)){
+                ps.setInt(1, user.getId());
+                ps.executeUpdate();
+                ResultSet rs = ps.getGeneratedKeys();
+                if(rs.next()){
+                    orderkey = rs.getInt(1);
+                }
             }
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
+            try(PreparedStatement olps = connection.prepareStatement(olSql)){
+                for (DTOOrderLine ol : cart.getOrderLines()) {
+                    olps.setInt(1, ol.getTopping().getId());
+                    olps.setInt(2, ol.getBottom().getId());
+                    olps.setInt(3, orderkey);
+                    olps.setInt(4, ol.getAmount());
+                    olps.addBatch();
+                }
+                olps.executeBatch();
+            }
 
+        }catch (SQLException e){
+            throw new DatabaseException(Arrays.toString(e.getStackTrace()));
+        }
 
         return cart;
     }

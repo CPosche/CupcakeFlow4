@@ -60,7 +60,7 @@ class UserMapperTest
     @Test
     void login() throws DatabaseException
     {
-        User expectedUser = new User("user","1234",0, "user");
+        User expectedUser = new User(1,"user","1234",0, "user");
         User actualUser = userMapper.login("user","1234");
         assertEquals(expectedUser, actualUser);
     }
@@ -82,7 +82,7 @@ class UserMapperTest
     {
         User newUser = userMapper.createUser("jill", "1234", "user");
         User logInUser = userMapper.login("jill","1234");
-        User expectedUser = new User("jill", "1234", 0,"user");
+        User expectedUser = new User(1 ,"jill", "1234", 0,"user");
         assertEquals(expectedUser, newUser);
         assertEquals(expectedUser, logInUser);
 
