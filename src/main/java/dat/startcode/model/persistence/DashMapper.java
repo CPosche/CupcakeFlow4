@@ -64,14 +64,15 @@ public class DashMapper implements IDashMapper {
         ArrayList<DTOOrderLine> orderlines = new ArrayList<>();
         Logger.getLogger("web").log(Level.INFO, "");
 
-        String sql = "SELECT ct.cupcaketop_name, ct.cupcaketop_price, cb.cupcakebottom_name, cb.cupcakebottom_price, ol.orderline_amount FROM cupcake.orderline ol" +
+        String sql = "SELECT ct.cupcaketop_id, cb.cupcakebottom_id, ol.orderline_amount FROM cupcake.orderline ol" +
                 "inner join cupcake.cupcaketops ct on ol.FK_cupcaketop_id = ct.cupcaketop_id" +
                 "inner join cupcake.cupcakebottoms cb on ol.FK_cupcakebot_id = cb.cupcakebottom_id" +
-                "WHERE FK_order_id = " + orderID;
+                "WHERE FK_order_id = ?";
 
         try (Connection connection = connectionPool.getConnection()){
 
             try (PreparedStatement ps = connection.prepareStatement(sql)){
+                ps.setInt(1, orderID);
                 ResultSet rs = ps.executeQuery();
                 while (rs.next())
                 {

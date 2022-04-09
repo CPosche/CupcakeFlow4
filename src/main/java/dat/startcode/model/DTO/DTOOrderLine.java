@@ -38,7 +38,7 @@ public class DTOOrderLine {
         this.topPrice = topping.getPrice();
         this.botPrice = bottom.getPrice();
         this.amount = amount;
-        this.lineTotal = (topPrice+botPrice)*amount;
+        this.lineTotal = (topping.getPrice()+bottom.getPrice())*amount;
         this.assembledCupcake = bottom.getName() + " cupcake with " + topping.getName() + " topping.";
     }
 }

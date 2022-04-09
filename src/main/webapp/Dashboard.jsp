@@ -46,7 +46,11 @@
                     </div>
                     <div class="col">
                         <div class="tab-content" id="nav-tabContent">
-
+                            <c:forEach items="${requestScope.views.get('orders')}" var="order">
+                                <div class="tab-pane fade show" id="list-order-${order.id}" role="tabpanel" aria-labelledby="list-${order.id}-list">
+                                    order id - ${order.id}
+                                </div>
+                            </c:forEach>
                         </div>
                     </div>
                 </div>
