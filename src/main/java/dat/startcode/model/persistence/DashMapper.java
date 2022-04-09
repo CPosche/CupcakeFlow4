@@ -1,14 +1,13 @@
 package dat.startcode.model.persistence;
 
+import dat.startcode.model.DTO.DTOOrderLine;
 import dat.startcode.model.DTO.OrderView;
 import dat.startcode.model.DTO.Views;
+import dat.startcode.model.entities.CupcakeBot;
 import dat.startcode.model.entities.CupcakeTop;
 import dat.startcode.model.entities.ICupcakePart;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -18,9 +17,11 @@ import java.util.logging.Logger;
 public class DashMapper implements IDashMapper {
 
     ConnectionPool connectionPool;
+    Map<String, ArrayList<ICupcakePart>> cupcakefactory;
 
-    public DashMapper(ConnectionPool connectionPool)
+    public DashMapper(ConnectionPool connectionPool, Map<String, ArrayList<ICupcakePart>> cupcakefactory)
     {
+        this.cupcakefactory = cupcakefactory;
         this.connectionPool = connectionPool;
     }
 
@@ -36,7 +37,7 @@ public class DashMapper implements IDashMapper {
     public ArrayList<Views> getDashOrders() {
         Logger.getLogger("web").log(Level.INFO, "");
         ArrayList<Views> orders = new ArrayList<>();
-        String sql = "select * from order_view";
+        String sql = "SELECT o.order_id, o.order_created, o.order_isPayed, u.user_email FROM cupcake.order o inner join cupcake.user u on o.FK_user_id = u.user_id";
 
         try (Connection connection = connectionPool.getConnection()){
 
@@ -44,10 +45,11 @@ public class DashMapper implements IDashMapper {
                 ResultSet rs = ps.executeQuery();
                 while (rs.next())
                 {
-                    int id = rs.getInt("cupcaketop_id");
-                    String name = rs.getString("cupcaketop_name");
-                    float topPrice = rs.getFloat("cupcaketop_price");
-//                    orders.add(new OrderView(1, "b@b.dk", 200, now(), false, ));
+                    int id = rs.getInt("order_id");
+                    Timestamp ts = rs.getTimestamp("order_created");
+                    boolean isPayed = (1 == rs.getInt("order_isPayed"));
+                    String userEmail = rs.getString("user_email");
+                    orders.add(new OrderView(id, userEmail, ts, isPayed, getOrderlines(id)));
                 }
             }
 
@@ -56,6 +58,35 @@ public class DashMapper implements IDashMapper {
         }
 
         return orders;
+    }
+
+    private ArrayList<DTOOrderLine> getOrderlines(int orderID) {
+        ArrayList<DTOOrderLine> orderlines = new ArrayList<>();
+        Logger.getLogger("web").log(Level.INFO, "");
+
+        String sql = "SELECT ct.cupcaketop_name, ct.cupcaketop_price, cb.cupcakebottom_name, cb.cupcakebottom_price, ol.orderline_amount FROM cupcake.orderline ol" +
+                "inner join cupcake.cupcaketops ct on ol.FK_cupcaketop_id = ct.cupcaketop_id" +
+                "inner join cupcake.cupcakebottoms cb on ol.FK_cupcakebot_id = cb.cupcakebottom_id" +
+                "WHERE FK_order_id = " + orderID;
+
+        try (Connection connection = connectionPool.getConnection()){
+
+            try (PreparedStatement ps = connection.prepareStatement(sql)){
+                ResultSet rs = ps.executeQuery();
+                while (rs.next())
+                {
+                    int ctId = rs.getInt("cupcaketop_id");
+                    int cbId = rs.getInt("cupcakebottom_id");
+                    int amount = rs.getInt("orderline_amount");
+                    orderlines.add(new DTOOrderLine((CupcakeTop) cupcakefactory.get("toppings").get(ctId), (CupcakeBot) cupcakefactory.get("bottoms").get(cbId), amount));
+                }
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return orderlines;
     }
 
     @Override

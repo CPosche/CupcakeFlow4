@@ -37,21 +37,37 @@
                 <div class="row">
                     <div class="col">
                         <div class="list-group" id="list-tab" role="tablist">
-                            <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-order-home" role="tab" aria-controls="list-home">Home</a>
-                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-order-profile" role="tab" aria-controls="list-profile">Profile</a>
-                            <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-order-messages" role="tab" aria-controls="list-messages">Messages</a>
-                            <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-order-settings" role="tab" aria-controls="list-settings">Settings</a>
+                            <c:forEach items="${requestScope.views.get('orders')}" var="order">
+                                <a class="list-group-item item-group-item-action" id="list-${order.id}-list" data-bs-toggle="list" href="#list-order-${order.id}" role="tab" aria-controls="list-${order.id}">
+                                        ${order.id} - ${order.userEmail} - ${order.totalorderlines} - ${order.timeCreated}
+                                </a>
+                            </c:forEach>
                         </div>
                     </div>
                     <div class="col">
                         <div class="tab-content" id="nav-tabContent">
-                            <div class="tab-pane fade show active" id="list-order-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
-                            <div class="tab-pane fade" id="list-order-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
-                            <div class="tab-pane fade" id="list-order-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-                            <div class="tab-pane fade" id="list-order-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
+
                         </div>
                     </div>
                 </div>
+<%--                <div class="row">--%>
+<%--                    <div class="col">--%>
+<%--                        <div class="list-group" id="list-tab" role="tablist">--%>
+<%--                            <a class="list-group-item list-group-item-action active" id="list-home-list" data-bs-toggle="list" href="#list-order-home" role="tab" aria-controls="list-home">Home</a>--%>
+<%--                            <a class="list-group-item list-group-item-action" id="list-profile-list" data-bs-toggle="list" href="#list-order-profile" role="tab" aria-controls="list-profile">Profile</a>--%>
+<%--                            <a class="list-group-item list-group-item-action" id="list-messages-list" data-bs-toggle="list" href="#list-order-messages" role="tab" aria-controls="list-messages">Messages</a>--%>
+<%--                            <a class="list-group-item list-group-item-action" id="list-settings-list" data-bs-toggle="list" href="#list-order-settings" role="tab" aria-controls="list-settings">Settings</a>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                    <div class="col">--%>
+<%--                        <div class="tab-content" id="nav-tabContent">--%>
+<%--                            <div class="tab-pane fade show active" id="list-order-home" role="tabpanel" aria-labelledby="list-home-list">...</div>--%>
+<%--                            <div class="tab-pane fade" id="list-order-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>--%>
+<%--                            <div class="tab-pane fade" id="list-order-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>--%>
+<%--                            <div class="tab-pane fade" id="list-order-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
             </c:if>
 
             <c:if test="${requestScope.Dashpage eq'Customers'}">

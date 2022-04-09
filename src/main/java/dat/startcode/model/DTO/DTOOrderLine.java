@@ -31,4 +31,14 @@ public class DTOOrderLine {
         this.lineTotal = (topPrice+botPrice)*amount;
         this.assembledCupcake = bottom.getName() + " cupcake with " + topping.getName() + " topping.";
     }
+
+    public DTOOrderLine(CupcakeTop topping, CupcakeBot bottom, int amount) {
+        this.topping = topping;
+        this.bottom = bottom;
+        this.topPrice = topping.getPrice();
+        this.botPrice = bottom.getPrice();
+        this.amount = amount;
+        this.lineTotal = (topPrice+botPrice)*amount;
+        this.assembledCupcake = bottom.getName() + " cupcake with " + topping.getName() + " topping.";
+    }
 }

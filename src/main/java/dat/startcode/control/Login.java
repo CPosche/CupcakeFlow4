@@ -52,7 +52,7 @@ public class Login extends HttpServlet
             session.setAttribute("cart", new DTOShoppingCart());
             if (user.getRole().equals("admin")) {
                 request.setAttribute("Dashpage","Orders");
-                request.getRequestDispatcher("Dashboard.jsp").forward(request,response);
+                request.getRequestDispatcher("DashServlet?Dashpage=Orders").forward(request,response);
             } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
