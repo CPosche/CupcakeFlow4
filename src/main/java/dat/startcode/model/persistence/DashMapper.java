@@ -23,6 +23,7 @@ public class DashMapper implements IDashMapper {
     {
         this.cupcakefactory = cupcakefactory;
         this.connectionPool = connectionPool;
+        System.out.println(cupcakefactory.size());
     }
 
     @Override
@@ -64,9 +65,9 @@ public class DashMapper implements IDashMapper {
         ArrayList<DTOOrderLine> orderlines = new ArrayList<>();
         Logger.getLogger("web").log(Level.INFO, "");
 
-        String sql = "SELECT ct.cupcaketop_id, cb.cupcakebottom_id, ol.orderline_amount FROM cupcake.orderline ol" +
-                "inner join cupcake.cupcaketops ct on ol.FK_cupcaketop_id = ct.cupcaketop_id" +
-                "inner join cupcake.cupcakebottoms cb on ol.FK_cupcakebot_id = cb.cupcakebottom_id" +
+        String sql = "SELECT ct.cupcaketop_id, cb.cupcakebottom_id, ol.orderline_amount FROM cupcake.orderline ol\n" +
+                "inner join cupcake.cupcaketops ct on ol.FK_cupcaketop_id = ct.cupcaketop_id\n" +
+                "inner join cupcake.cupcakebottoms cb on ol.FK_cupcakebot_id = cb.cupcakebottom_id\n" +
                 "WHERE FK_order_id = ?";
 
         try (Connection connection = connectionPool.getConnection()){
@@ -79,7 +80,7 @@ public class DashMapper implements IDashMapper {
                     int ctId = rs.getInt("cupcaketop_id");
                     int cbId = rs.getInt("cupcakebottom_id");
                     int amount = rs.getInt("orderline_amount");
-                    orderlines.add(new DTOOrderLine((CupcakeTop) cupcakefactory.get("toppings").get(ctId), (CupcakeBot) cupcakefactory.get("bottoms").get(cbId), amount));
+                    orderlines.add(new DTOOrderLine((CupcakeTop) cupcakefactory.get("toppings").get(ctId-1), (CupcakeBot) cupcakefactory.get("bottoms").get(cbId-1), amount));
                 }
             }
 

@@ -48,7 +48,34 @@
                         <div class="tab-content" id="nav-tabContent">
                             <c:forEach items="${requestScope.views.get('orders')}" var="order">
                                 <div class="tab-pane fade show" id="list-order-${order.id}" role="tabpanel" aria-labelledby="list-${order.id}-list">
-                                    order id - ${order.id}
+                                    <table class="table table-striped">
+                                        <thead>
+                                        <tr>
+                                            <th scope="col">#</th>
+                                            <th scope="col">Cupcake</th>
+                                            <th scope="col">Amount</th>
+                                            <th scope="col">Price</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody style="font-size: 12px" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                        <c:forEach items="${order.orderLines}" var="line">
+                                            <tr>
+                                                <th scope="row">${order.orderLines.indexOf(line)+1}</th>
+                                                <td>${line.assembledCupcake}</td>
+                                                <td>${line.amount}</td>
+                                                <td>${line.lineTotal} kr</td>
+                                            </tr>
+                                            <tr>
+                                                <td colspan=5>
+                                                    <div id="full_order_line" style="color: lightslategray">
+                                                        <p>+ full orderline here</p>
+                                                    </div>
+                                                </td>
+
+                                            </tr>
+                                        </c:forEach>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </c:forEach>
                         </div>
