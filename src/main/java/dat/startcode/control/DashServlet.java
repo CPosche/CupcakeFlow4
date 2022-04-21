@@ -26,6 +26,8 @@ public class DashServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setAttribute("errormessage", "you do not have permission to enter this site");
+        request.getRequestDispatcher("error.jsp").forward(request, response);
         doPost(request,response);
     }
 
