@@ -44,3 +44,5 @@ Funktionelt kan applikationen:
 ## MVC arkitektur
 
 ![](documentation/mvc.jpg)
+
+https://youtu.be/x3-HhjrgfKo

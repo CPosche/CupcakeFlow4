@@ -5,6 +5,14 @@
 
 <t:pagetemplate>
 
+    <jsp:attribute name="header">
+         Admin Dashboard
+    </jsp:attribute>
+
+    <jsp:attribute name="footer">
+        Admin Dashboard
+    </jsp:attribute>
+
     <jsp:body>
 
         <div class="container-fluid">

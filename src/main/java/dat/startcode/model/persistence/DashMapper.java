@@ -49,6 +49,7 @@ public class DashMapper implements IDashMapper {
                     int id = rs.getInt("order_id");
                     Timestamp ts = rs.getTimestamp("order_created");
                     boolean isPayed = (1 == rs.getInt("order_isPayed"));
+                    System.out.println(isPayed);
                     String userEmail = rs.getString("user_email");
                     orders.add(new OrderView(id, userEmail, ts, isPayed, getOrderlines(id)));
                 }
